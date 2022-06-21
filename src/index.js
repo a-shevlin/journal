@@ -13,10 +13,13 @@ $(document).ready(function(){
     const name = $('#nameInput').val();
     const title = $('#titleInput').val();
     const body = $('#bodyInput').val();
+    const teaserText = getTeaser(body);
+    let outputHTML = createHTML(body, teaserText);
+    
     console.log(body);
     
     let entry1 = new Entry(name, title, body);
-    $('.output').append(createHTML);
+    $('.output').append(outputHTML);
     $('#nameInput').addClass('inputSubmit');
     $('#titleInput').addClass('inputSubmit');
     $('#bodyInput').addClass('inputSubmit');
@@ -24,11 +27,10 @@ $(document).ready(function(){
   });
 });
 
-function createHTML(entry1) {
-  const wordCount = wordCounter(entry1.body);
-  const countVowel = vowelCounter(entry1.body);
+function createHTML(text, text2) {
+  const wordCount = wordCounter(text);
+  const countVowel = vowelCounter(text);
   //getTeaser return first sentence (up to 8 words)
-  const teaserText = getTeaser(entry1.body);
   const wordCountHTML = document.createElement('ul');
   wordCountHTML.innerHTML = 'total count: ' + wordCount;
   const countVowelHTML = document.createElement('li');
@@ -36,5 +38,11 @@ function createHTML(entry1) {
   const consCount = document.createElement('li');
   consCount.innerHTML = 'consonant count: ' + countVowel[1];
   const teaser = document.createElement('li');
-  teaser.innerHTML = 'teaser text: ' + teaserText;
+  teaser.innerHTML = 'teaser text: ' + text2;
+
+  wordCountHTML.appendChild(countVowelHTML);
+  countVowelHTML.appendChild(countVowelHTML);
+  consCount.appendChild(countVowelHTML);
+  teaser.appendChild(countVowelHTML);
+  $('.output').append(wordCountHTML);
 }
