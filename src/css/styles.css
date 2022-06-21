@@ -9,7 +9,7 @@ body {
   background-size: cover;
   background-position: 0vw 0vh;
 }
-
+/* hides auto submit light blue color */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
@@ -21,18 +21,18 @@ input:-webkit-autofill:active{
   background-color: yellow;
 }
 
-#name {
-  background-color: rgb(233, 255, 238);
-  border: inset 3px rgba(4, 85, 4, 0.801);
-  color: rgba(4, 85, 4, 0.801);
+.inputBox {
+  background-color: rgb(255, 233, 233);
+  border: inset 3px rgba(85, 16, 4, 0.801);
+  color: rgba(85, 4, 4, 0.801);
   width: 500px;
 }
 
-#name::placeholder {
-  color: rgba(4, 85, 4, 0.801);
+.inputBox::placeholder {
+  color: rgba(85, 4, 4, 0.801);
 }
 
-#name:focus {
-  border: 3px rgba(27, 156, 27, 0.801);
+.inputBox:focus {
+  border: 3px rgba(156, 27, 27, 0.801);
   box-shadow: none;
 }
